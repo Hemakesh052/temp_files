@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularJS Greeting</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="GreetingController">
+  <h1>{{ greeting }}</h1>
+</div>
+
+<script>
+  var app = angular.module('myApp', []);
+
+  app.controller('GreetingController', function($scope) {
+    
+    $scope.greeting = 'Hello Everyone';
+  });
+</script>
+
+</body> 
+</html>

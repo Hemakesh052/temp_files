@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Validation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="emailValidationApp" ng-controller="EmailValidationController">
+  <form name="emailForm" ng-submit="submitForm()" novalidate>
+    <label>Email:</label>
+    <input type="email" name="email" ng-model="email" required>
+    <span ng-show="emailForm.email.$error.email && !emailForm.email.$pristine">Invalid email address</span>
+    <br>
+    <button type="submit" ng-disabled="emailForm.$invalid">Submit</button>
+  </form>
+</div>
+
+<script>
+  angular.module('emailValidationApp', [])
+    .controller('EmailValidationController', function($scope) {
+      $scope.submitForm = function() {
+        if ($scope.emailForm.$valid) {
+          alert('Form submitted with email: ' + $scope.email);
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      };
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="calculatorApp" ng-controller="CalculatorController">
+  <h2>Calculator</h2>
+  
+  <label>First Number:</label>
+  <input type="number" ng-model="num1" required>
+  
+  <label>Second Number:</label>
+  <input type="number" ng-model="num2" required>
+  
+  <label>Select Operation:</label>
+  <select ng-model="selectedOperation">
+    <option value="addition">Addition (+)</option>
+    <option value="subtraction">Subtraction (-)</option>
+    <option value="multiplication">Multiplication (*)</option>
+    <option value="division">Division (/)</option>
+  </select>
+  
+  <button ng-click="performOperation()">Calculate</button>
+  
+  <p ng-show="result !== undefined">Result: {{ result }}</p>
+</div>
+
+<script>
+  angular.module('calculatorApp', [])
+    .controller('CalculatorController', function($scope) {
+      $scope.performOperation = function() {
+        if ($scope.selectedOperation === 'addition') {
+          $scope.result = $scope.num1 + $scope.num2;
+        } else if ($scope.selectedOperation === 'subtraction') {
+          $scope.result = $scope.num1 - $scope.num2;
+        } else if ($scope.selectedOperation === 'multiplication') {
+          $scope.result = $scope.num1 * $scope.num2;
+        } else if ($scope.selectedOperation === 'division') {
+          if ($scope.num2 !== 0) {
+            $scope.result = $scope.num1 / $scope.num2;
+          } else {
+            $scope.result = 'Cannot divide by zero';
+          }
+        }
+      };
+    });
+</script>
+
+</body>
+</html>

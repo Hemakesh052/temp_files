@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularJS Counter</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="CounterController">
+  <p>Counter Value: {{ counter }}</p>
+  <button ng-click="incrementCounter()">Increment Counter</button>
+</div>
+
+<script>
+  // Define the AngularJS module
+  var app = angular.module('myApp', []);
+  
+  // Define the AngularJS controller
+  app.controller('CounterController', function($scope) {
+    // Initialize counter variable
+    $scope.counter = 0;
+    
+    // Function to increment the counter
+    $scope.incrementCounter = function() {
+      $scope.counter++;
+    };
+  });
+</script>
+
+</body> 
+</html>
